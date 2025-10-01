@@ -11,9 +11,25 @@ public class MainApp {
         int firstNumber = input.nextInt();
         System.out.print("Enter the second number: ");
         int secondNumber = input.nextInt();
+        System.out.println("Choose an operation (add, subtract, multiply, divide): ");
+        String operation = input.next();
 
-        Calculator calc = new Calculator();
-       int result = calc.add(firstNumber, secondNumber);
+        double result = switch (operation){
+            case "add" -> {
+                Calculator calc = new Calculator();
+                yield calc.add(firstNumber, secondNumber);
+
+            }
+            case  "subtract" -> {
+                Calculator calc = new Calculator();
+                yield calc.subtract(firstNumber, secondNumber);
+            }
+            default -> {
+                System.out.println("Invalid operation");
+                yield 0;
+            }
+        };
+
 
        System.out.println("The result is: " + result);
     }
