@@ -24,6 +24,10 @@ public class MainApp {
                 Calculator calc = new Calculator();
                 yield calc.subtract(firstNumber, secondNumber);
             }
+            case  "multiply" -> {
+                Calculator calc = new Calculator();
+                yield calc.multiply(firstNumber, secondNumber);
+            }
             default -> {
                 System.out.println("Invalid operation");
                 yield 0;
