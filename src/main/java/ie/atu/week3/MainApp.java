@@ -28,6 +28,10 @@ public class MainApp {
                 Calculator calc = new Calculator();
                 yield calc.multiply(firstNumber, secondNumber);
             }
+            case  "divide" -> {
+                Calculator calc = new Calculator();
+                yield calc.divide(firstNumber, secondNumber);
+            }
             default -> {
                 System.out.println("Invalid operation");
                 yield 0;
