@@ -1,5 +1,4 @@
 package ie.atu.week3;
-
 import java.util.Scanner;
 
 public class MainApp {
@@ -8,37 +7,51 @@ public class MainApp {
 
 
         System.out.print("Enter the first number: ");
-        int firstNumber = input.nextInt();
-        System.out.print("Enter the second number: ");
-        int secondNumber = input.nextInt();
-        System.out.println("Choose an operation (add, subtract, multiply, divide): ");
-        String operation = input.next();
+        if (input.hasNextDouble()){
+            double firstNumber = input.nextDouble();
 
-        double result = switch (operation){
-            case "add" -> {
-                Calculator calc = new Calculator();
-                yield calc.add(firstNumber, secondNumber);
+            System.out.print("Enter the second number: ");
 
-            }
-            case  "subtract" -> {
-                Calculator calc = new Calculator();
-                yield calc.subtract(firstNumber, secondNumber);
-            }
-            case  "multiply" -> {
-                Calculator calc = new Calculator();
-                yield calc.multiply(firstNumber, secondNumber);
-            }
-            case  "divide" -> {
-                Calculator calc = new Calculator();
-                yield calc.divide(firstNumber, secondNumber);
-            }
-            default -> {
-                System.out.println("Invalid operation");
-                yield 0;
-            }
-        };
+            double secondNumber = input.nextDouble();
 
+            System.out.println("Choose an operation (add, subtract, multiply, divide, power, mod): ");
+            String operation = input.next();
 
-       System.out.println("The result is: " + result);
+            double result = switch (operation){
+                case "add" -> {
+                    Calculator calc = new Calculator();
+                    yield calc.add(firstNumber, secondNumber);
+                }
+                case  "subtract" -> {
+                    Calculator calc = new Calculator();
+                    yield calc.subtract(firstNumber, secondNumber);
+                }
+                case  "multiply" -> {
+                    Calculator calc = new Calculator();
+                    yield calc.multiply(firstNumber, secondNumber);
+                }
+                case  "divide" -> {
+                    Calculator calc = new Calculator();
+                    yield calc.divide(firstNumber, secondNumber);
+                }
+                case "power" -> {
+                    Calculator calc = new Calculator();
+                    yield calc.power(firstNumber, secondNumber);
+                }
+                case "mod" -> {
+                    Calculator calc = new Calculator();
+                    yield calc.mod(firstNumber, secondNumber);
+                }
+                default -> {
+                    System.out.println("Invalid operation");
+                    yield 0;
+                }
+            };
+            System.out.println("The result is: " + result);
+        }
+        else {
+            System.out.println("Invalid Number");
+        }
+
     }
 }
